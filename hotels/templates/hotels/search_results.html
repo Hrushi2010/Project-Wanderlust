@@ -1,0 +1,47 @@
+
+
+{% block content %}
+    <h1>Hotel Search Results</h1>
+    <ul class="list-group">
+        {% for hotel in hotels %}
+            <li class="list-group-item">
+                {{ hotel.name }} - {{ hotel.city }}, {{ hotel.country }} - ₹{{ hotel.price_per_night }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+
+{% comment %} {% block content %}
+    <h1>Hotel Search Results</h1>
+    <ul class="list-group">
+        {% for hotel in hotels %}
+            <li class="list-group-item">
+                {{ hotel.name }} - {{ hotel.city }}, {{ hotel.country }} - ₹{{ hotel.price_per_night }}
+                <form method="POST" action="{% url 'book_hotel' hotel.id %}">
+                    {% csrf_token %}
+                    <input type="date" name="check_in_date" required>
+                    <input type="date" name="check_out_date" required>
+                    <button type="submit" class="btn btn-primary float-right">Book Now</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %} {% endcomment %}
+
+
+    <h1>Hotel Search Results</h1>
+    <ul class="list-group">
+        {% for hotel in hotels %}
+            <li class="list-group-item">
+                {{ hotel.name }} - {{ hotel.city }}, {{ hotel.country }} - ₹{{ hotel.price_per_night }}
+                <form method="POST" action="{% url 'book_hotel' hotel.id %}">
+                    {% csrf_token %}
+                    <input type="date" name="check_in_date" required>
+                    <input type="date" name="check_out_date" required>
+                    <button type="submit" class="btn btn-primary float-right">Book Now</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+

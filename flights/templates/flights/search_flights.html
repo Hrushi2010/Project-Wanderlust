@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Flights</title>
+</head>
+<body>
+    <h1>Available Flights</h1>
+    <ul>
+        {% for flight in flights %}
+        <li>{{ flight.flight_number }}: {{ flight.departure_airport }} to {{ flight.arrival_airport }} - {{ flight.price }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Available Flights</h1>
+    <ul class="list-group">
+        {% for flight in flights %}
+            <li class="list-group-item">
+                {{ flight.flight_number }}: {{ flight.departure_airport }} to {{ flight.arrival_airport }} - ₹{{ flight.price }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Search Flights</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+{% endblock %}
+
+
+<!-- flights/templates/flights/search_flights.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Flights</title>
+</head>
+<body>
+    <h1>Search Flights</h1>
+    {% block content %}
+    <!-- Your search form and results display here -->
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,52 @@
+{% comment %} <!DOCTYPE html>
+<html>
+<head>
+    <title>Search Hotels</title>
+</head>
+<body>
+    <h1>Available Hotels</h1>
+    <ul>
+        {% for hotel in hotels %}
+        <li>{{ hotel.name }} - {{ hotel.city }}, {{ hotel.country }} - {{ hotel.price_per_night }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Available Hotels</h1>
+    <ul class="list-group">
+        {% for hotel in hotels %}
+            <li class="list-group-item">
+                {{ hotel.name }} - {{ hotel.city }}, {{ hotel.country }} - ₹{{ hotel.price_per_night }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Search Hotels</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+{% endblock %} {% endcomment %}
+
+
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Hotel Search Results</h1>
+<ul class="list-group">
+    {% for hotel in hotels %}
+        <li class="list-group-item">
+            {{ hotel.name }} - {{ hotel.city }}, {{ hotel.country }} - ₹{{ hotel.price_per_night }}
+            <a href="{% url 'book_hotel' hotel.id %}" class="btn btn-primary float-right">Book Now</a>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}
