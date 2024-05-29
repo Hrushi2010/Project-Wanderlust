@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Booking Confirmation</h1>
+    <p>Thank you for your booking, {{ booking.passenger_name }}!</p>
+    <p>Flight: {{ booking.flight.flight_number }}</p>
+    <p>Amount Paid: ₹{{ booking.amount_paid }}</p>
+    <a href="{% url 'search_flights' %}" class="btn btn-primary">Search More Flights</a>
+{% endblock %}

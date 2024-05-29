@@ -1,42 +1,49 @@
-{% extends 'base.html' %}
+{% comment %} {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Flight Search Results</h1>
+    <h1>Available Flights</h1>
     <ul class="list-group">
         {% for flight in flights %}
             <li class="list-group-item">
                 {{ flight.flight_number }}: {{ flight.departure_airport }} to {{ flight.arrival_airport }} - ₹{{ flight.price }}
-            </li>
-        {% endfor %}
-    </ul>
-{% endblock %}
-
-
-{% extends 'base.html' %}
-{% comment %} 
-{% block content %}
-    <h1>Flight Search Results</h1>
-    <ul class="list-group">
-        {% for flight in flights %}
-            <li class="list-group-item">
-                {{ flight.flight_number }}: {{ flight.departure_airport }} to {{ flight.arrival_airport }} - ₹{{ flight.price }}
-                <a href="{% url 'book_flight' flight.id %}" class="btn btn-primary float-right">Book Now</a>
+                <a href="{% url 'book_flight' flight.id %}" class="btn btn-primary">Book</a>
             </li>
         {% endfor %}
     </ul>
 {% endblock %} {% endcomment %}
 
 
-{% extends 'base.html' %}
+{% comment %} <h1>Available Flights</h1>
+<ul>
+    {% for itinerary in flights %}
+        <li>
+            {% for leg in itinerary['legs'] %}
+                {{ leg['departure_place']['name'] }} to {{ leg['arrival_place']['name'] }} - ${{ leg['pricing_options'][0]['price']['amount'] }}
+                <br>
+            {% endfor %}
+        </li>
+    {% endfor %}
+</ul>
+<h1>Available Flights</h1>
+<ul>
+    {% for itinerary in flights %}
+        <li>
+            {% for leg in itinerary['legs'] %}
+                {{ leg['departure_place']['name'] }} to {{ leg['arrival_place']['name'] }} - ${{ leg['pricing_options'][0]['price']['amount'] }}
+                <br>
+            {% endfor %}
+        </li>
+    {% endfor %}
+</ul> {% endcomment %}
 
-{% block content %}
-    <h1>Flight Search Results</h1>
-    <ul class="list-group">
-        {% for flight in flights %}
-            <li class="list-group-item">
-                {{ flight.flight_number }}: {{ flight.departure_airport }} to {{ flight.arrival_airport }} - ₹{{ flight.price }}
-                <a href="{% url 'book_flight' flight.id %}" class="btn btn-primary float-right">Book Now</a>
-            </li>
-        {% endfor %}
-    </ul>
-{% endblock %}
+
+<h1>Search Results</h1>
+<ul>
+    {% for flight in flights %}
+        <li>
+            {{ flight.origin }} to {{ flight.destination }} - {{ flight.price }}
+        </li>
+    {% empty %}
+        <li>No flights found.</li>
+    {% endfor %}
+</ul>

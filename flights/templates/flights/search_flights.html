@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{% comment %} <!DOCTYPE html>
 <html>
 <head>
     <title>Search Flights</title>
@@ -53,4 +53,28 @@
     <!-- Your search form and results display here -->
     {% endblock %}
 </body>
-</html>
+</html> {% endcomment %}
+
+
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Search Flights</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+{% endblock %}
+
+
+{% comment %} {% extends 'base.html' %}
+
+{% block content %}
+    <h1>Search Flights</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+{% endblock %} {% endcomment %}

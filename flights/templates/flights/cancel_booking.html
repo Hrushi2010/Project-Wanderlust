@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Cancel Booking</h1>
+    <p>Are you sure you want to cancel the booking for {{ booking.passenger_name }} on flight {{ booking.flight.flight_number }}?</p>
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Cancel Booking</button>
+    </form>
+{% endblock %}

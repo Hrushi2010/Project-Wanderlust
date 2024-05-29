@@ -63,10 +63,39 @@
 # ]
 
 
+# from django.contrib import admin
+# from django.urls import path, include
+
+# urlpatterns = [
+#     path('admin/', admin.site.urls),
+#     path('hotels/', include('hotels.urls')),
+# ]
+
+
+# wanderlust/urls.py
+
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import include, path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hotels/', include('hotels.urls')),
+    path('flights/', include('flights.urls')),
+    path('hotels/', include('hotels.urls')),  # Assuming hotels app is also configured similarly
 ]
+
+
+# from django.contrib import admin
+# from django.urls import path, include
+
+# urlpatterns = [
+#     path('admin/', admin.site.urls),
+#     path('flights/', include('flights.urls')),
+# ]
+# wanderlust/urls.py
+# from django.contrib import admin
+# from django.urls import path, include
+
+# urlpatterns = [
+#     path('admin/', admin.site.urls),
+#     path('flights/', include('flights.urls')),
+# ]
